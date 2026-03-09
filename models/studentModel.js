@@ -1,4 +1,4 @@
-const db = require("../db");
+const db = require("../config/db");
 
 exports.getAllStudents = (callback) => {
   db.query("SELECT * FROM students", callback);
