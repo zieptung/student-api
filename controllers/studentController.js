@@ -11,7 +11,7 @@ exports.createStudent = (req, res) => {
 
   Student.createStudent(student, (err) => {
     if (err) res.send(err);
-    else res.json({ message: "Student created" });
+    else res.json({ message: "Tạo sinh viên thành công" });
   });
 };
 
@@ -20,6 +20,6 @@ exports.deleteStudent = (req, res) => {
 
   Student.deleteStudent(id, (err) => {
     if (err) res.send(err);
-    else res.json({ message: "Student deleted" });
+    else res.json({ message: "Xoá sinh viên thành công" });
   });
 };
