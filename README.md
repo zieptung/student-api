@@ -1,72 +1,94 @@
-# Student API
-Backend REST API for managing student data.
+# Student Management API
+Student Management API là một **RESTful Backend API** dùng để quản lý thông tin sinh viên.
+Hệ thống cung cấp các endpoint để **tạo, đọc, cập nhật và xoá dữ liệu sinh viên** trong cơ sở dữ liệu.
 
-## Tech Stack
+Project được xây dựng nhằm minh hoạ cách phát triển backend sử dụng Node.js, Express.js và MySQL theo mô hình MVC.
+
+# Công nghệ sử dụng
 * Node.js
 * Express.js
 * MySQL
 * dotenv
 * cors
 
-## Project Structure
+# Cấu trúc project
 ```
 student-api
 │
-├─ config
-│   └─ db.js              # MySQL database connection
+├── config
+│   └── db.js                # Kết nối cơ sở dữ liệu MySQL
 │
-├─ controllers
-│   └─ studentController.js   # Business logic for student operations
+├── controllers
+│   └── studentController.js # Xử lý logic cho các API sinh viên
 │
-├─ models
-│   └─ studentModel.js        # Database queries
+├── models
+│   └── studentModel.js      # Truy vấn dữ liệu từ database
 │
-├─ routes
-│   └─ studentRoutes.js       # API endpoints
+├── routes
+│   └── studentRoutes.js     # Định nghĩa các API endpoint
 │
-├─ server.js                  # Main server entry
-├─ .env                       # Environment variables
-├─ package.json
+├── server.js                # File khởi động server
+├── .env                     # Biến môi trường
+├── package.json
+└── README.md
 ```
 
-## Installation
-1. Clone repository
+# Cách hoạt động của hệ thống
+Luồng xử lý request trong project:
+
+```
+Client
+  ↓
+Routes
+  ↓
+Controllers
+  ↓
+Models
+  ↓
+MySQL Database
+```
+
+1. Client gửi request đến API.
+2. Routes nhận request và chuyển đến controller.
+3. Controller xử lý logic nghiệp vụ.
+4. Model thực hiện truy vấn database.
+5. Server trả dữ liệu JSON về client.
+
+# Cài đặt project
+
+## 1. Clone repository
 ```
 git clone https://github.com/your-username/student-api.git
 ```
 
-2. Install dependencies
+## 2. Cài đặt dependencies
 ```
 npm install
 ```
 
-3. Create `.env` file
+# Cấu hình biến môi trường
+Tạo file `.env` trong thư mục gốc project.
+
+Ví dụ:
+
 ```
+# Server configuration
+PORT=5000
+
+# Database configuration
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
+DB_PASSWORD=123456
 DB_NAME=studentdb
-PORT=5000
+
 ```
 
-4. Run server
-```
-node server.js
-```
-
-Server will run at:
-```
-http://localhost:5000
-```
-
-## Database Setup
-Example SQL:
+# Thiết lập cơ sở dữ liệu
+Tạo database và bảng `students` trong MySQL:
 
 ```
 CREATE DATABASE studentdb;
-
 USE studentdb;
-
 CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
@@ -75,24 +97,35 @@ CREATE TABLE students (
 );
 ```
 
-## API Endpoints
+# Chạy server
+Khởi động server:
+```
+node server.js
+```
 
-### Get all students
+Server sẽ chạy tại:
+```
+http://localhost:5000
+```
+
+# Danh sách API Endpoints
+
+## Lấy danh sách sinh viên
 ```
 GET /students
 ```
 
-### Get student by id
+## Lấy thông tin sinh viên theo ID
 ```
 GET /students/:id
 ```
 
-### Create student
+## Thêm sinh viên mới
 ```
 POST /students
 ```
 
-Body example:
+Ví dụ body request:
 ```
 {
   "name": "Nguyen Van A",
@@ -101,21 +134,21 @@ Body example:
 }
 ```
 
-### Update student
+## Cập nhật thông tin sinh viên
 ```
 PUT /students/:id
 ```
 
-### Delete student
+## Xoá sinh viên
 ```
 DELETE /students/:id
 ```
 
-## Testing API
+# Kiểm thử API
+Có thể sử dụng các công cụ sau để test API:
 
-You can test APIs using:
 * Postman
 * Insomnia
 
-## Author
+# Tác giả
 Diệp Tùng
